@@ -6,6 +6,18 @@ The mod draws a compact panel in the top-left of the screen listing each
 equipped armour piece (head, chest, legs, feet), its remaining durability
 (colour-coded) and your total armour points.
 
+## Screenshot
+
+![Armour Stats HUD showing equipped armour, colour-coded durability and total armour points](docs/armour-stats-hud.png)
+
+The durability of each piece is colour-coded — green when healthy, yellow when
+worn and red when nearly broken (e.g. the damaged Diamond Chestplate above).
+
+## Demo
+
+A short screen recording of the HUD updating live as armour is equipped is
+available at [`docs/armour-stats-hud-demo.mp4`](docs/armour-stats-hud-demo.mp4).
+
 ## Requirements
 
 - Minecraft **26.2** (Fabric)
