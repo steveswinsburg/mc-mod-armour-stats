@@ -20,8 +20,8 @@ import net.minecraft.world.item.ItemStack;
  * Draws equipped armour status on the HUD. Two layouts are available and can
  * be switched with {@code /armourstats}:
  * <ul>
- *   <li>{@link DisplayMode#PANEL} – detailed top-left panel</li>
- *   <li>{@link DisplayMode#HOTBAR} – icon row to the left of the hotbar</li>
+ *   <li>{@link DisplayMode#PANEL} - detailed top-left panel</li>
+ *   <li>{@link DisplayMode#HOTBAR} - icon row to the left of the hotbar</li>
  * </ul>
  */
 public class ArmourStatsHud implements HudElement {
@@ -155,10 +155,10 @@ public class ArmourStatsHud implements HudElement {
 		int centerX = graphics.guiWidth() / 2;
 		int hotbarLeft = centerX - HOTBAR_HALF_WIDTH;
 
-		// Sit left of the offhand slot when it occupies the left side of the hotbar.
+		// Always reserve the left offhand slot for right-handed players so the
+		// armour row does not jump or overlap when the offhand is equipped.
 		int anchorRight = hotbarLeft;
-		ItemStack offhand = player.getOffhandItem();
-		if (!offhand.isEmpty() && player.getMainArm().getOpposite() == HumanoidArm.LEFT) {
+		if (player.getMainArm().getOpposite() == HumanoidArm.LEFT) {
 			anchorRight = hotbarLeft - OFFHAND_SLOT_WIDTH;
 		}
 
