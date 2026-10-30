@@ -8,8 +8,9 @@
 		"steveswinsburg"
 	],
 	"contact": {
-		"homepage": "https://github.com/steveswinsburg/mc-mod-armour-stats",
-		"sources": "https://github.com/steveswinsburg/mc-mod-armour-stats"
+		"homepage": "https://modrinth.com/project/armour-stats",
+		"sources": "https://github.com/steveswinsburg/mc-mod-armour-stats",
+		"issues": "https://github.com/steveswinsburg/mc-mod-armour-stats/issues"
 	},
 	"license": "MIT",
 	"environment": "client",

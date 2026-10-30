@@ -1,6 +1,15 @@
 # Armour Stats HUD
 
+[![Build](https://github.com/steveswinsburg/mc-mod-armour-stats/actions/workflows/build.yml/badge.svg)](https://github.com/steveswinsburg/mc-mod-armour-stats/actions/workflows/build.yml)
+[![Release](https://github.com/steveswinsburg/mc-mod-armour-stats/actions/workflows/release.yml/badge.svg)](https://github.com/steveswinsburg/mc-mod-armour-stats/actions/workflows/release.yml)
+[![Latest release](https://img.shields.io/github/v/release/steveswinsburg/mc-mod-armour-stats?label=latest%20release)](https://github.com/steveswinsburg/mc-mod-armour-stats/releases/latest)
+[![Modrinth](https://img.shields.io/modrinth/v/armour-stats?label=modrinth)](https://modrinth.com/project/armour-stats)
+[![Modrinth downloads](https://img.shields.io/modrinth/dt/armour-stats?label=downloads)](https://modrinth.com/project/armour-stats)
+[![License](https://img.shields.io/github/license/steveswinsburg/mc-mod-armour-stats)](LICENSE)
+
 A Minecraft mod to show the status of your equipped armour on the HUD.
+
+**Download:** [Modrinth](https://modrinth.com/project/armour-stats) · [GitHub Releases](https://github.com/steveswinsburg/mc-mod-armour-stats/releases)
 
 Two display modes are available (toggle with `/armourstats`):
 
