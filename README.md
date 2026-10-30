@@ -51,6 +51,25 @@ This is a [Fabric](https://fabricmc.net/) mod built with Gradle + Fabric Loom.
 
 The built mod jar is written to `build/libs/armourstats-<version>.jar`.
 
+## Releasing
+
+Releases are created by pushing a version tag. CI builds the mod and attaches
+the jar to a GitHub Release.
+
+1. Bump `mod_version` in [`gradle.properties`](gradle.properties) (e.g. `1.0.0`).
+2. Commit the version bump on `master`.
+3. Tag and push (keep the tag in sync with `mod_version`):
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+The [Release](.github/workflows/release.yml) workflow runs on tags matching
+`v*`, builds with `./gradlew build`, and publishes
+`build/libs/armourstats-<version>.jar` to a new GitHub Release (with generated
+release notes).
+
 ## License
 
 [MIT](LICENSE)
