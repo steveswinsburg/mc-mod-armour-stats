@@ -15,10 +15,10 @@
 	"environment": "client",
 	"entrypoints": {
 		"main": [
-			"com.steveswinsburg.armourstats.ArmourStatsMod"
+			"io.github.steveswinsburg.armourstats.ArmourStatsMod"
 		],
 		"client": [
-			"com.steveswinsburg.armourstats.client.ArmourStatsClient"
+			"io.github.steveswinsburg.armourstats.client.ArmourStatsClient"
 		]
 	},
 	"depends": {
