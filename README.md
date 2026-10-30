@@ -62,8 +62,8 @@ The built mod jar is written to `build/libs/armourstats-<version>.jar`.
 
 ## Releasing
 
-Releases are created by pushing a version tag. CI builds the mod and attaches
-the jar to a GitHub Release.
+Releases are created by pushing a version tag prefixed with `v` e.g., v.1.2.3. 
+CI builds the mod and attaches the jar to a GitHub Release.
 
 1. Bump `mod_version` in [`gradle.properties`](gradle.properties) (e.g. `1.0.0`).
 2. Commit the version bump on `master`.
@@ -73,11 +73,6 @@ the jar to a GitHub Release.
 git tag v1.0.0
 git push origin v1.0.0
 ```
-
-The [Release](.github/workflows/release.yml) workflow runs on tags matching
-`v*`, builds with `./gradlew build`, and publishes
-`build/libs/armourstats-<version>.jar` to a new GitHub Release (with generated
-release notes).
 
 ## License
 
