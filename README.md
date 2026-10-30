@@ -4,15 +4,15 @@ A Minecraft mod to show the status of your equipped armour on the HUD.
 
 Two display modes are available (toggle with `/armourstats`):
 
-- **panel** (default) – a compact panel in the top-left listing each equipped
+- **panel** - a compact panel in the top-left listing each equipped
   armour piece (head, chest, legs, feet), its remaining durability
   (colour-coded) and your total armour points.
-- **hotbar** – a row of hotbar-sized slots to the left of the hotbar showing
+- **hotbar** (default) - a row of hotbar-sized slots to the left of the hotbar showing
   just the armour icons and their durability bars.
 
 ## Screenshot
 
-![Armour Stats HUD showing equipped armour, colour-coded durability and total armour points](docs/armour-stats-panel.png)
+![Armour Stats HUD showing equipped armour, colour-coded durability and total armour points](docs/armourstats-panel.png)
 
 The durability of each piece is colour-coded — green when healthy, yellow when worn and red when nearly broken.
 

@@ -17,10 +17,9 @@ import io.github.steveswinsburg.armourstats.ArmourStatsMod;
 public final class ArmourStatsConfig {
 	
 	private static final String KEY_DISPLAY_MODE = "displayMode";
+	private static final DisplayMode DEFAULT_DISPLAY_MODE = DisplayMode.HOTBAR;
 
-	//default display mode is hotbar
-	private static DisplayMode displayMode = DisplayMode.HOTBAR;
-	
+	private static DisplayMode displayMode = DEFAULT_DISPLAY_MODE;
 	private static boolean loaded;
 
 	private ArmourStatsConfig() {
@@ -66,7 +65,8 @@ public final class ArmourStatsConfig {
 		Properties properties = new Properties();
 		try (Reader reader = Files.newBufferedReader(path)) {
 			properties.load(reader);
-			displayMode = DisplayMode.fromId(properties.getProperty(KEY_DISPLAY_MODE, DisplayMode.PANEL.id()));
+			displayMode = DisplayMode.fromId(
+					properties.getProperty(KEY_DISPLAY_MODE, DEFAULT_DISPLAY_MODE.id()));
 		} catch (IOException e) {
 			ArmourStatsMod.LOGGER.warn("Failed to load Armour Stats config from {}", path, e);
 		}
