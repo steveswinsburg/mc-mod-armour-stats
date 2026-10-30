@@ -43,7 +43,9 @@ public class ArmourStatsHud implements HudElement {
 	public void extractRenderState(GuiGraphicsExtractor graphics, DeltaTracker deltaTracker) {
 		Minecraft minecraft = Minecraft.getInstance();
 		LocalPlayer player = minecraft.player;
-		if (player == null) {
+		// HudElementRegistry.addLast does not inherit vanilla HUD visibility, so
+		// also honour F1 (Hud.isHidden) so this panel disappears with the rest of the HUD.
+		if (player == null || minecraft.gui.hud.isHidden()) {
 			return;
 		}
 
@@ -72,16 +74,18 @@ public class ArmourStatsHud implements HudElement {
 			int iconX = textX;
 			int iconY = y;
 			int labelX = iconX + ICON + TEXT_GAP;
+			int labelMaxWidth = right - PADDING - labelX;
 
 			if (stack.isEmpty()) {
 				graphics.fill(iconX, iconY, iconX + ICON, iconY + ICON, 0x40FFFFFF);
-				graphics.text(font, Component.literal(slot.label() + ": empty"),
+				graphics.text(font, ellipsize(font, slot.label() + ": empty", labelMaxWidth),
 						labelX, iconY + 1, COLOUR_EMPTY);
 			} else {
 				graphics.item(stack, iconX, iconY);
 				graphics.itemDecorations(font, stack, iconX, iconY);
 
-				graphics.text(font, stack.getHoverName(), labelX, iconY + 1, COLOUR_LABEL);
+				graphics.text(font, ellipsize(font, stack.getHoverName().getString(), labelMaxWidth),
+						labelX, iconY + 1, COLOUR_LABEL);
 
 				String durability;
 				int durabilityColour;
@@ -103,6 +107,20 @@ public class ArmourStatsHud implements HudElement {
 
 		Component total = Component.literal("Total armour points: " + player.getArmorValue());
 		graphics.text(font, total, textX, y, COLOUR_TITLE);
+	}
+
+	private static Component ellipsize(Font font, String text, int maxWidth) {
+		if (maxWidth <= 0 || font.width(text) <= maxWidth) {
+			return Component.literal(text);
+		}
+
+		final String ellipsis = "...";
+		int ellipsisWidth = font.width(ellipsis);
+		if (ellipsisWidth >= maxWidth) {
+			return Component.literal(font.plainSubstrByWidth(ellipsis, maxWidth));
+		}
+
+		return Component.literal(font.plainSubstrByWidth(text, maxWidth - ellipsisWidth) + ellipsis);
 	}
 
 	private static int durabilityColour(int remaining, int max) {

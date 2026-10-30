@@ -17,7 +17,9 @@ if [ ! -x "${JDK_DIR}/bin/java" ]; then
 	sudo mkdir -p /opt/java
 	tmp="$(mktemp -d)"
 	curl -fsSL "${JDK_URL}" -o "${tmp}/jdk.tar.gz"
-	extracted="$(tar -tzf "${tmp}/jdk.tar.gz" | head -1 | cut -d/ -f1)"
+	# Consume the full listing so SIGPIPE from an early close does not abort
+	# under `set -o pipefail` (exit 141) before extraction can run.
+	extracted="$(tar -tzf "${tmp}/jdk.tar.gz" | cut -d/ -f1 | awk 'NR==1 {first=$0} END {print first}')"
 	sudo rm -rf "/opt/java/${extracted}"
 	sudo tar -xzf "${tmp}/jdk.tar.gz" -C /opt/java
 	sudo ln -sfn "/opt/java/${extracted}" "${JDK_DIR}"
