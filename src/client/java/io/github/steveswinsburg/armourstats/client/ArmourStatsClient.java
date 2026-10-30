@@ -8,8 +8,8 @@ import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.minecraft.resources.Identifier;
 
 /**
- * 
- * ArmourStatsClient
+ * Client-side initialisation.
+ * Registers the HUD element and commands.
  */
 public class ArmourStatsClient implements ClientModInitializer {
 	public static final Identifier ARMOUR_STATS_LAYER =

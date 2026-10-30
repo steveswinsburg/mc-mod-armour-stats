@@ -10,7 +10,7 @@ import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.network.chat.Component;
 
 /**
- * Client commands for toggling / setting the armour HUD display mode.
+ * Setup the commands for toggling / setting the armour HUD display mode.
  *
  * <pre>
  * /armourstats              – show the current mode
