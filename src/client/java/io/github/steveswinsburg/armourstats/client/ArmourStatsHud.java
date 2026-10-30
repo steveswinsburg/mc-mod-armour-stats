@@ -55,9 +55,13 @@ public class ArmourStatsHud implements HudElement {
 	// vanilla hotbar texture size used when cropping the first four slots
 	private static final int HOTBAR_TEXTURE_WIDTH = 182;
 	private static final int HOTBAR_TEXTURE_HEIGHT = 22;
-	
-	// width of a four-slot slice of the hotbar texture (border + 4x20)
-	private static final int HOTBAR_ROW_WIDTH = HOTBAR_SLOT * SLOTS.size() + 2;
+
+	// Left border + four 20px slots (without the trailing mid-hotbar divider).
+	private static final int HOTBAR_ROW_BODY_WIDTH = 1 + HOTBAR_SLOT * SLOTS.size();
+	// Outer right border taken from the far end of the hotbar texture.
+	private static final int HOTBAR_ROW_BORDER_WIDTH = 1;
+	// Total drawn width: left border + 4 slots + right border.
+	private static final int HOTBAR_ROW_WIDTH = HOTBAR_ROW_BODY_WIDTH + HOTBAR_ROW_BORDER_WIDTH;
 	
 	// width of the vanilla offhand slot sprite
 	private static final int OFFHAND_SLOT_WIDTH = 29;
@@ -165,6 +169,8 @@ public class ArmourStatsHud implements HudElement {
 		int left = Math.max(MARGIN, anchorRight - HOTBAR_GAP - HOTBAR_ROW_WIDTH);
 		int top = guiHeight - HOTBAR_HEIGHT;
 
+		// Cropping only the first four slots leaves a slot divider on the right.
+		// Draw that body, then append the hotbar's real outer right border.
 		graphics.blitSprite(
 				RenderPipelines.GUI_TEXTURED,
 				HOTBAR_SPRITE,
@@ -174,7 +180,18 @@ public class ArmourStatsHud implements HudElement {
 				0,
 				left,
 				top,
-				HOTBAR_ROW_WIDTH,
+				HOTBAR_ROW_BODY_WIDTH,
+				HOTBAR_HEIGHT);
+		graphics.blitSprite(
+				RenderPipelines.GUI_TEXTURED,
+				HOTBAR_SPRITE,
+				HOTBAR_TEXTURE_WIDTH,
+				HOTBAR_TEXTURE_HEIGHT,
+				HOTBAR_TEXTURE_WIDTH - HOTBAR_ROW_BORDER_WIDTH,
+				0,
+				left + HOTBAR_ROW_BODY_WIDTH,
+				top,
+				HOTBAR_ROW_BORDER_WIDTH,
 				HOTBAR_HEIGHT);
 
 		int seed = 1;
