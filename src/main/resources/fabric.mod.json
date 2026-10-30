@@ -1,0 +1,30 @@
+{
+	"schemaVersion": 1,
+	"id": "armourstats",
+	"version": "${version}",
+	"name": "Armour Stats HUD",
+	"description": "Shows the status of your equipped armour on the HUD.",
+	"authors": [
+		"steveswinsburg"
+	],
+	"contact": {
+		"homepage": "https://github.com/steveswinsburg/mc-mod-armour-stats",
+		"sources": "https://github.com/steveswinsburg/mc-mod-armour-stats"
+	},
+	"license": "MIT",
+	"environment": "client",
+	"entrypoints": {
+		"main": [
+			"com.steveswinsburg.armourstats.ArmourStatsMod"
+		],
+		"client": [
+			"com.steveswinsburg.armourstats.client.ArmourStatsClient"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.0",
+		"minecraft": "~26.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
